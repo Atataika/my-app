@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { InterceptorStoreService } from 'src/app/core/services/store/impl/interceptor-store/interceptor-store.service';
+import { InterceptorStoreService } from 'src/app/core/store/impl/interceptor-store/interceptor-store.service';
 
 @Component({
   selector: 'app-interceptor-logger',
@@ -9,11 +9,9 @@ import { InterceptorStoreService } from 'src/app/core/services/store/impl/interc
 export class InterceptorLoggerComponent implements OnInit {
   constructor(private testStore: InterceptorStoreService) {}
 
-  ngOnInit(): void {
-    console.log('Inited store in comp', this.testStore.getStoreSnapshot);
-  }
+  ngOnInit(): void {}
 
   testStoreFunc() {
-    this.testStore.getStoreValue$.subscribe(res => console.log('FROM STORE', res));
+    this.testStore.storeValue$.subscribe(res => console.log('FROM STORE', res));
   }
 }

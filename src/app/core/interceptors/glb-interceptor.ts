@@ -2,7 +2,7 @@ import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse } fr
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
-import { InterceptorStoreService } from '../services/store/impl/interceptor-store/interceptor-store.service';
+import { InterceptorStoreService } from '../store/impl/interceptor-store/interceptor-store.service';
 
 @Injectable()
 export class GlbInterceptor implements HttpInterceptor {
@@ -10,15 +10,13 @@ export class GlbInterceptor implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     return next.handle(req).pipe(
-      tap(e => {
-        if (e instanceof HttpResponse) {
-          console.log('status:', e.status);
-          console.log('body:', e.body);
+      tap(res => {
+        if (res instanceof HttpResponse) {
+          this.store.storeValue = res;
         }
       }),
       catchError(err => {
-        this.store.setStoreValue(err);
-        // FIXME: Ошибка обработки. Нужно поправить типизацию
+        this.store.storeValue = err;
         return of(err);
       })
     );

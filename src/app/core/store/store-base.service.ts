@@ -5,9 +5,9 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export abstract class StoreBaseService {
-  abstract get getStoreSnapshot(): any[];
+  abstract get storeValueSnapshot(): any[];
 
-  abstract get getStoreValue$(): Observable<any[]>;
+  abstract get storeValue$(): Observable<any[]>;
 
-  abstract setStoreValue(value: any): void;
+  abstract set storeValue(value: any);
 }
