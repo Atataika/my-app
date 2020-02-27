@@ -1,13 +1,13 @@
-import { Component, OnInit, ViewEncapsulation, OnDestroy } from "@angular/core";
-import { ActivatedRoute, Router } from "@angular/router";
 import { HttpClient } from '@angular/common/http';
-import { takeUntil } from 'rxjs/operators';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
-  selector: "app-sandbox",
-  templateUrl: "./sandbox.component.html",
-  styleUrls: ["./sandbox.component.scss"]
+  selector: 'app-sandbox',
+  templateUrl: './sandbox.component.html',
+  styleUrls: ['./sandbox.component.scss']
 })
 export class SandboxComponent implements OnInit, OnDestroy {
   public users: IUser[];
@@ -18,8 +18,8 @@ export class SandboxComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.route.events.pipe(takeUntil(this.subscribe)).subscribe(res => {
-      console.log(res instanceof ActivatedRoute);
-      console.log(res);
+      // console.log(res instanceof ActivatedRoute);
+      // console.log(res);
     });
   }
 
@@ -29,12 +29,14 @@ export class SandboxComponent implements OnInit, OnDestroy {
   }
 
   public onGetUsers(): void {
-    this.http.get("https://reqres.in/api/users?page=2").pipe(takeUntil(this.subscribe)).subscribe((res: IGetUsersRes) => this.users = res.data)
+    this.http
+      .get('https://reqres.in/api/users?page=2')
+      .pipe(takeUntil(this.subscribe))
+      .subscribe((res: IGetUsersRes) => (this.users = res.data));
   }
 
   public onGetFaultReq(): void {
-    this.http.get("https://reqres.in/api/users/23").subscribe(res => console.log(res));
-    
+    this.http.get('https://reqres.in/api/users/23').subscribe(res => console.log(res));
   }
 }
 

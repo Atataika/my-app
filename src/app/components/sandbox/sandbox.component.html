@@ -1,20 +1,22 @@
 <p>sandbox works!</p>
-<a routerLink="host-listener">first child</a>
-<button mat-button 
-    (click)="onGetUsers()">
-    Get data
+<a routerLink="host-listener">Host listener</a>
+<a routerLink="interceptor-logger">Interceptor logger</a>
+<button mat-button
+  (click)="onGetUsers()">
+  Get data
 </button>
-<button mat-button 
-    (click)="onGetFaultReq()">
-    Get error
+<button mat-button
+  (click)="onGetFaultReq()">
+  Get error
 </button>
 
-    <div *ngFor="let user of users">
-        <img src="{{ user.avatar }}" alt="{{ user.email }}">
-        <div>
-            <span>{{ user.first_name }}</span>
-            <span>{{ user.last_name }}</span>
-        </div>
-        <div>{{ user.email }}</div>
-    </div>
+<div *ngFor="let user of users">
+  <img src="{{ user.avatar }}"
+    alt="{{ user.email }}">
+  <div>
+    <span>{{ user.first_name }}</span>
+    <span>{{ user.last_name }}</span>
+  </div>
+  <div>{{ user.email }}</div>
+</div>
 <router-outlet></router-outlet>

@@ -1,29 +1,25 @@
-import { LayoutModule } from "@angular/cdk/layout";
-import { NgModule } from "@angular/core";
-import { ReactiveFormsModule } from "@angular/forms";
-import { BrowserModule } from "@angular/platform-browser";
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { AComponent } from "./a/a.component";
-import { AppRoutingModule } from "./app-routing.module";
-import { AppComponent } from "./app.component";
-import { AboutComponent } from "./components/about/about.component";
-import { MainPageComponent } from "./components/main-page/main-page.component";
-import { PostsComponent } from "./components/posts/posts.component";
-import { SandboxModule } from "./components/sandbox/sandbox.module";
-import { MaterialModule } from "./shared/material.module";
-import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
-import { GlbInterceptor } from './main/interceptors/glb-interceptor';
+import { LayoutModule } from '@angular/cdk/layout';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { AboutComponent } from './components/about/about.component';
+import { MainPageComponent } from './components/main-page/main-page.component';
+import { PostsComponent } from './components/posts/posts.component';
+import { SandboxModule } from './components/sandbox/sandbox.module';
+import { GlbInterceptor } from './core/interceptors/glb-interceptor';
+import { SharedModule } from './shared/shared.module';
+
+const components = [AppComponent, MainPageComponent, PostsComponent, AboutComponent];
+
 @NgModule({
-  declarations: [
-    AppComponent,
-    MainPageComponent,
-    AComponent,
-    PostsComponent,
-    AboutComponent
-  ],
+  declarations: [...components],
   imports: [
     HttpClientModule,
-    MaterialModule,
+    SharedModule,
     SandboxModule,
     BrowserModule,
     AppRoutingModule,
@@ -31,9 +27,7 @@ import { GlbInterceptor } from './main/interceptors/glb-interceptor';
     LayoutModule,
     ReactiveFormsModule
   ],
-  providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: GlbInterceptor, multi: true }
-  ],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: GlbInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

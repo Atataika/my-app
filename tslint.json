@@ -83,7 +83,26 @@
     "template-banana-in-box": true,
     "template-no-negated-async": true,
     "use-lifecycle-interface": true,
-    "use-pipe-transform-interface": true
+    "use-pipe-transform-interface": true,
+    "type-literal-delimiter": true,
+    "semicolon": [true, "always"],
+    "curly": true,
+    "arrow-return-shorthand": true,
+    "eofline": true,
+    "import-spacing": true,
+    "indent": [
+      true,
+      "spaces"
+    ],
+    "interface-over-type-literal": true,
+    "no-shadowed-variable": true,
+    "no-trailing-whitespace": true,
+    "no-unnecessary-initializer": true,
+    "no-unused-expression": true,
+    "triple-equals": [
+      true,
+      "allow-null-check"
+    ]
   },
   "rulesDirectory": [
     "codelyzer"
