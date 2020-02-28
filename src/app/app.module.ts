@@ -6,14 +6,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AboutComponent } from './components/about/about.component';
-import { MainPageComponent } from './components/main-page/main-page.component';
-import { PostsComponent } from './components/posts/posts.component';
-import { SandboxModule } from './components/sandbox/sandbox.module';
 import { GlbInterceptor } from './core/interceptors/glb-interceptor';
+import { SandboxModule } from './main/components/sandbox/sandbox.module';
+import { MainModule } from './main/main.module';
 import { SharedModule } from './shared/shared.module';
 
-const components = [AppComponent, MainPageComponent, PostsComponent, AboutComponent];
+const components = [AppComponent];
 
 @NgModule({
   declarations: [...components],
@@ -21,6 +19,7 @@ const components = [AppComponent, MainPageComponent, PostsComponent, AboutCompon
     HttpClientModule,
     SharedModule,
     SandboxModule,
+    MainModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,

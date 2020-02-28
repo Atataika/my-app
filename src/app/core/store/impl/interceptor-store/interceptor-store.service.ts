@@ -8,7 +8,7 @@ import { StoreBaseService } from '../../store-base.service';
 })
 export class InterceptorStoreService implements StoreBaseService {
   private storeState = new BehaviorSubject<any[]>([]);
-
+  public storeStateLoading = new BehaviorSubject<boolean>(false);
   public get storeValueSnapshot(): any[] {
     return this.storeState.value;
   }
@@ -18,8 +18,10 @@ export class InterceptorStoreService implements StoreBaseService {
   }
 
   public set storeValue(value: HttpResponse<any> | HttpErrorResponse) {
-    const storeValue = this.storeState.value;
-    storeValue.push(value);
-    this.storeState.next(storeValue);
+    this.storeState.next([...this.storeState.value, value]);
+  }
+
+  public setStoreStateLoading(): any {
+    this.storeStateLoading.next(true);
   }
 }

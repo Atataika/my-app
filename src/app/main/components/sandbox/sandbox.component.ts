@@ -12,26 +12,26 @@ import { takeUntil } from 'rxjs/operators';
 export class SandboxComponent implements OnInit, OnDestroy {
   public users: IUser[];
 
-  private subscribe = new Subject();
+  private unsubscribe = new Subject();
 
   constructor(private activeRoute: ActivatedRoute, private route: Router, private http: HttpClient) {}
 
   ngOnInit(): void {
-    this.route.events.pipe(takeUntil(this.subscribe)).subscribe(res => {
+    this.route.events.pipe(takeUntil(this.unsubscribe)).subscribe(res => {
       // console.log(res instanceof ActivatedRoute);
       // console.log(res);
     });
   }
 
   ngOnDestroy(): void {
-    this.subscribe.next();
-    this.subscribe.complete();
+    this.unsubscribe.next();
+    this.unsubscribe.complete();
   }
 
   public onGetUsers(): void {
     this.http
       .get('https://reqres.in/api/users?page=2')
-      .pipe(takeUntil(this.subscribe))
+      .pipe(takeUntil(this.unsubscribe))
       .subscribe((res: IGetUsersRes) => (this.users = res.data));
   }
 
