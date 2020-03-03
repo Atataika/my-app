@@ -1,0 +1,10 @@
+:host {
+  display: block;
+}
+
+.content {
+  &__url {
+    display: flex;
+    justify-content: space-between;
+  }
+}

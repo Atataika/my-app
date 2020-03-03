@@ -1,0 +1,17 @@
+<div mat-dialog-title>
+  <h1>{{ data.name }}</h1>
+</div>
+
+<div mat-dialog-content
+  class="content">
+  <div class="content__url">
+    <span>Url: {{data.url}}</span>
+    <span>Status: {{data.status}}</span>
+  </div>
+</div>
+
+<div mat-dialog-actions>
+  <button color="primary"
+    mat-raised-button
+    (click)="onDialogClose()">Close</button>
+</div>

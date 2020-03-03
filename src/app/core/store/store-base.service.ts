@@ -5,9 +5,13 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export abstract class StoreBaseService {
+  abstract isStoreLoading: any;
+
   abstract get storeValueSnapshot(): any[];
 
   abstract get storeValue$(): Observable<any[]>;
 
-  abstract set storeValue(value: any);
+  abstract setStoreValue(value: any): void;
+
+  abstract setStoreStateLoading(state: any): void;
 }
