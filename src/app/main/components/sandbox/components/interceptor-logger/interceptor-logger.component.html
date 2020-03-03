@@ -1,4 +1,8 @@
-<p>interceptor-logger works!</p>
-<button mat-raised-button
-  color="primary"
-  (click)="testStoreFunc() ">Test store</button>
+<p>INTERCEPTOR LOGS</p>
+
+<div *ngFor="let response of responses$ | async">
+  <div>{{ response.dateCreated }}</div>
+  <!-- TODO: переделать модель -->
+  <!-- <div>{{ response.response }}</div> -->
+  <div></div>
+</div>

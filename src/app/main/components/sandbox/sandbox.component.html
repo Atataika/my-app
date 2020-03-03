@@ -1,15 +1,27 @@
 <p>sandbox works!</p>
-<div routerLink="host-listener">Host listener</div>
-<div routerLink="interceptor-logger">Interceptor logger</div>
-<button mat-button
+<nav mat-tab-nav-bar>
+  <a routerLink="host-listener"
+    mat-tab-link>Host listener
+  </a>
+  <a routerLink="interceptor-logger"
+    mat-tab-link>Interceptor logger
+  </a>
+</nav>
+
+<router-outlet></router-outlet>
+
+
+<!-- TODO: Избавиться от строк ниже -->
+<button mat-raised-button
+  color="primary"
   (click)="onGetUsers()">
   Get data
 </button>
-<button mat-button
+<button mat-raised-button
+  color="accent"
   (click)="onGetFaultReq()">
   Get error
 </button>
-<router-outlet></router-outlet>
 
 <div class="users">
   <div *ngFor="let user of users">
