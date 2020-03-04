@@ -1,5 +1,7 @@
 <mat-drawer-container class="example-container">
-  <mat-drawer class="sidebar" mode="side" [opened]="isSidebarOpened">
+  <mat-drawer class="sidebar"
+    mode="side"
+    [opened]="isSidebarOpened">
     <nav style="display: flex; flex-flow: column">
       <a routerLink="/home">Home</a>
       <a routerLink="/posts">Posts</a>
@@ -9,7 +11,10 @@
   </mat-drawer>
 
   <mat-drawer-content class="content">
-    <div (click)="changeSidebarState()">X</div>
+    <fa-icon class="nav-toggler"
+      (click)="changeSidebarState()"
+      [icon]="faBars"
+      [size]="'2x'"></fa-icon>
     <router-outlet></router-outlet>
   </mat-drawer-content>
 </mat-drawer-container>
