@@ -9,7 +9,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { GlbInterceptor } from './core/interceptors/glb-interceptor';
 import { SandboxModule } from './main/components/sandbox/sandbox.module';
-import { MainModule } from './main/main.module';
 import { SharedModule } from './shared/shared.module';
 
 const components = [AppComponent];
@@ -20,7 +19,6 @@ const components = [AppComponent];
     HttpClientModule,
     SharedModule,
     SandboxModule,
-    MainModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,

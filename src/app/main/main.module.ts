@@ -10,7 +10,6 @@ import { InterceptorLoggerComponent } from './components/sandbox/components/inte
 import { SandboxComponent } from './components/sandbox/sandbox.component';
 
 const routes: Routes = [
-  { path: 'home', component: MainPageComponent },
   { path: 'posts', component: PostsComponent },
   {
     path: 'sandbox',
@@ -20,8 +19,7 @@ const routes: Routes = [
     ],
     component: SandboxComponent
   },
-  { path: 'about', component: AboutComponent },
-  { path: '', redirectTo: 'home', pathMatch: 'full' }
+  { path: 'about', component: AboutComponent }
 ];
 
 const components = [MainPageComponent, PostsComponent, AboutComponent];
