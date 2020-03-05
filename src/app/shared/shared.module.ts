@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { ErrorDialogComponent } from './error-dialog/error-dialog.component';
-import { ErrorDialogService } from './error-dialog/services/error-dialog.service';
+import { ErrorDialogComponent } from './components/error-dialog/error-dialog.component';
 import { MaterialModule } from './material.module';
+import { ErrorDialogService } from './services/error-dialog.service';
 
 @NgModule({
   providers: [ErrorDialogService],

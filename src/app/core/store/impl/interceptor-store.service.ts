@@ -1,14 +1,14 @@
 import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { ResponseLog } from '../../models/response-log.model';
-import { StoreBaseService } from '../../store-base.service';
+import { ResponseLog } from 'src/app/core/models/response-log.model';
+import { StoreBaseService } from '../store-base.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class InterceptorStoreService implements StoreBaseService {
-  private storeState = new BehaviorSubject<any[]>([]);
+  private storeState = new BehaviorSubject<ResponseLog[]>([]);
   public isStoreLoading = new BehaviorSubject<boolean>(false);
 
   public get storeValueSnapshot(): ResponseLog[] {

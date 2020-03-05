@@ -8,17 +8,13 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { GlbInterceptor } from './core/interceptors/glb-interceptor';
-import { SandboxModule } from './main/components/sandbox/sandbox.module';
 import { SharedModule } from './shared/shared.module';
 
-const components = [AppComponent];
-
 @NgModule({
-  declarations: [...components],
+  declarations: [AppComponent],
   imports: [
     HttpClientModule,
     SharedModule,
-    SandboxModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,

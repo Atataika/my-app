@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { first } from 'rxjs/operators';
-import { InterceptorStoreService } from 'src/app/core/store/impl/interceptor-store/interceptor-store.service';
-import { ResponseLog } from 'src/app/core/store/models/response-log.model';
+import { ResponseLog } from 'src/app/core/models/response-log.model';
+import { InterceptorStoreService } from 'src/app/core/store/impl/interceptor-store.service';
 
 @Component({
   selector: 'app-interceptor-logger',
