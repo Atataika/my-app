@@ -1,15 +1,26 @@
-import { Component } from '@angular/core';
-import { faBars } from '@fortawesome/free-solid-svg-icons';
+import { Component, ViewChild } from '@angular/core';
+import { MatSidenav } from '@angular/material/sidenav';
+import { faBars, faHome, faInfo, faMarker, faPlay, faTimes, IconDefinition } from '@fortawesome/free-solid-svg-icons';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  public faBars = faBars;
-  public isSidebarOpened: boolean;
+  @ViewChild(MatSidenav, { static: true })
+  public sidenav: MatSidenav;
+
+  public faIcon: IconDefinition = faBars;
+  public navigationsRoutes = [
+    { title: 'Home', link: '', icon: faHome },
+    { title: 'Posts', link: 'posts', icon: faMarker },
+    { title: 'Sandbox', link: 'sandbox', icon: faPlay },
+    { title: 'About me', link: 'about', icon: faInfo }
+  ];
 
   public changeSidebarState() {
-    this.isSidebarOpened = !this.isSidebarOpened;
+    this.sidenav.toggle();
+    this.faIcon = this.faIcon.iconName === 'bars' ? faTimes : faBars;
   }
 }

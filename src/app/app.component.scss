@@ -1,16 +1,24 @@
-.example-container {
-  height: 100%;
+:host {
+  font-size: 20px;
 }
 
-.sidebar {
+.sidenav {
   width: 250px;
   padding: 20px;
+
+  &__container {
+    height: 100%;
+  }
+
+  &__content {
+    padding: 20px;
+  }
 }
 
-.content {
-  padding: 20px;
+.nav-item_active {
+  color: indigo;
 }
 
 .nav-toggler {
-  position: absolute;
+  cursor: pointer;
 }
