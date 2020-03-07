@@ -9,8 +9,8 @@ const routes: Routes = [
   {
     path: '',
     children: [
-      { path: 'host-listener', component: HostListenerComponent },
-      { path: 'interceptor-logger', component: InterceptorLoggerComponent }
+      { path: 'host-listener', component: HostListenerComponent, data: { title: 'Host listener' } },
+      { path: 'interceptor-logger', component: InterceptorLoggerComponent, data: { title: 'Interceptor logs' } }
     ],
     component: SandboxComponent
   }
