@@ -9,9 +9,10 @@ import { faBars, faHome, faInfo, faMarker, faPlay, faTimes, IconDefinition } fro
 })
 export class AppComponent {
   @ViewChild(MatSidenav, { static: true })
-  public sidenav: MatSidenav;
+  private sidenav: MatSidenav;
 
   public faIcon: IconDefinition = faBars;
+  public headerTitle = 'My Application';
   public navigationsRoutes = [
     { title: 'Home', link: '', icon: faHome },
     { title: 'Posts', link: 'posts', icon: faMarker },

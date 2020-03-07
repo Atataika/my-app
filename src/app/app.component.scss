@@ -1,22 +1,23 @@
+@import '~@angular/material/theming';
+
 :host {
   font-size: 20px;
 }
 
 .sidenav {
   width: 250px;
-  padding: 20px;
 
   &__container {
     height: 100%;
   }
+}
 
-  &__content {
-    padding: 20px;
-  }
+.router {
+  margin: 20px 15px;
 }
 
 .nav-item_active {
-  color: indigo;
+  color: mat-color($mat-indigo, 700);
 }
 
 .nav-toggler {

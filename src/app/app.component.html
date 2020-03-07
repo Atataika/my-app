@@ -16,15 +16,18 @@
     </mat-nav-list>
   </mat-sidenav>
 
-
   <mat-sidenav-content class="sidenav__content">
+    <mat-toolbar color="primary">
+      <fa-icon class="nav-toggler"
+        (click)="changeSidebarState()"
+        [icon]="faIcon"
+        pull="left"
+        [size]="'lg'"></fa-icon>
+      <span>{{ headerTitle }}</span>
+    </mat-toolbar>
 
-    <fa-icon class="nav-toggler"
-      (click)="changeSidebarState()"
-      [icon]="faIcon"
-      pull="left"
-      [size]="'lg'"></fa-icon>
-
-    <router-outlet></router-outlet>
+    <div class="router">
+      <router-outlet></router-outlet>
+    </div>
   </mat-sidenav-content>
 </mat-sidenav-container>
