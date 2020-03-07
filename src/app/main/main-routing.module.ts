@@ -6,14 +6,14 @@ import { PostsComponent } from './components/posts/posts.component';
 import { MainPageComponent } from './main-page.component';
 
 const routes: Routes = [
-  { path: '', component: MainPageComponent, data: { title: 'Main' } },
+  { path: '', component: MainPageComponent, data: { title: 'Main page' } },
   { path: 'posts', component: PostsComponent, data: { title: 'Posts' } },
   {
     path: 'sandbox',
     loadChildren: () => import('./components/sandbox/sandbox.module').then(m => m.SandboxModule),
     data: { title: 'Sandbox' }
   },
-  { path: 'about', component: AboutComponent, data: { title: 'About' } },
+  { path: 'about', component: AboutComponent, data: { title: 'About me' } },
   { path: '**', redirectTo: '', pathMatch: 'full' }
 ];
 

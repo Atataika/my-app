@@ -13,15 +13,18 @@ $mat-darker-primary-color: mat-color($mat-indigo, 700);
     height: 100%;
   }
 
-  &__nav-list {
-    padding-bottom: 580px;
-  }
-
   &__footer {
-    text-align: center;
+    align-self: center;
     font-size: 12px;
     color: mat-color($mat-indigo, 200);
   }
+}
+
+.nav-list__wrapper {
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  height: 90%;
 }
 
 .li_selected {

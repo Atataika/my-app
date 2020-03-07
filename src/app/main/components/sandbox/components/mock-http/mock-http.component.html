@@ -1,0 +1,22 @@
+<button mat-raised-button
+  color="primary"
+  (click)="onGetUsers()">
+  Get data
+</button>
+<button mat-raised-button
+  color="accent"
+  (click)="onGetFaultReq()">
+  Get error
+</button>
+
+<div class="users">
+  <div *ngFor="let user of users">
+    <img src="{{ user.avatar }}"
+      alt="{{ user.email }}">
+    <div>
+      <span>{{ user.first_name }}</span>
+      <span>{{ user.last_name }}</span>
+    </div>
+    <div>{{ user.email }}</div>
+  </div>
+</div>

@@ -5,23 +5,25 @@
       Дайте деняк T_T
     </mat-toolbar>
 
-    <mat-nav-list class="sidenav__nav-list">
-      <mat-list-item *ngFor="let route of navigationsRoutes"
-        (click)='sideNav.close()'
-        routerLink="{{ route.link }}"
-        routerLinkActive="li_selected"
-        [routerLinkActiveOptions]="{exact: true}">
-        <fa-icon mat-list-icon
-          [fixedWidth]="true"
-          [icon]="route.icon"></fa-icon>
-        <span mat-line>{{ route.title }}</span>
-      </mat-list-item>
-    </mat-nav-list>
+    <div class="nav-list__wrapper">
+      <mat-nav-list>
+        <mat-list-item *ngFor="let route of navigationsRoutes"
+          (click)='sideNav.close()'
+          routerLink="{{ route.link }}"
+          routerLinkActive="li_selected"
+          [routerLinkActiveOptions]="{exact: true}">
+          <fa-icon mat-list-icon
+            [fixedWidth]="true"
+            [icon]="route.icon"></fa-icon>
+          <span mat-line>{{ route.title }}</span>
+        </mat-list-item>
+      </mat-nav-list>
 
-    <div class=sidenav__footer>
-      <span>ну пожалуйста</span>
-      <br>
-      <span>Work in progress</span>
+      <div class=sidenav__footer>
+        <span>ну пожалуйста</span>
+        <br>
+        <span>Work in progress</span>
+      </div>
     </div>
 
   </mat-sidenav>

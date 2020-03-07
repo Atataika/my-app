@@ -1,27 +1,30 @@
-import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import { first } from 'rxjs/operators';
-import { ResponseLog } from 'src/app/core/models/response-log.model';
-import { InterceptorStoreService } from 'src/app/core/store/impl/interceptor-store.service';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTable } from '@angular/material/table';
+import { InterceptorLoggerDataSource, InterceptorLoggerItem } from './interceptor-logger-datasource';
 
 @Component({
   selector: 'app-interceptor-logger',
   templateUrl: './interceptor-logger.component.html',
   styleUrls: ['./interceptor-logger.component.scss']
 })
-export class InterceptorLoggerComponent implements OnInit {
-  public responses$: Observable<ResponseLog[]>;
+export class InterceptorLoggerComponent implements AfterViewInit, OnInit {
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatTable) table: MatTable<InterceptorLoggerItem>;
+  dataSource: InterceptorLoggerDataSource;
 
-  constructor(private interceptorStore: InterceptorStoreService) {}
+  /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
+  displayedColumns = ['id', 'name'];
 
-  ngOnInit(): void {
-    this.responses$ = this.getResponsesFromStore$();
-
-    // TODO: Переделать интерфейс респонсов. Убрать вывод с мок сервера. Доделать компоненты постов. Запилить монгу в докер
-    this.responses$.pipe(first()).subscribe(res => console.log(res));
+  ngOnInit() {
+    this.dataSource = new InterceptorLoggerDataSource();
   }
 
-  private getResponsesFromStore$(): Observable<ResponseLog[]> {
-    return this.interceptorStore.storeValue$;
+  ngAfterViewInit() {
+    this.dataSource.sort = this.sort;
+    this.dataSource.paginator = this.paginator;
+    this.table.dataSource = this.dataSource;
   }
 }
