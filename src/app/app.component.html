@@ -1,20 +1,29 @@
 <mat-sidenav-container class="sidenav__container">
   <mat-sidenav #sideNav
-    class="sidenav"
-    mode="side">
-    <mat-nav-list>
+    class="sidenav">
+    <mat-toolbar color='primary'>
+      Дайте деняк T_T
+    </mat-toolbar>
 
+    <mat-nav-list class="sidenav__nav-list">
       <mat-list-item *ngFor="let route of navigationsRoutes"
+        (click)='sideNav.close()'
         routerLink="{{ route.link }}"
-        routerLinkActive="nav-item_active"
+        routerLinkActive="li_selected"
         [routerLinkActiveOptions]="{exact: true}">
         <fa-icon mat-list-icon
           [fixedWidth]="true"
           [icon]="route.icon"></fa-icon>
-        <a mat-line>{{ route.title }}</a>
+        <span mat-line>{{ route.title }}</span>
       </mat-list-item>
-
     </mat-nav-list>
+
+    <div class=sidenav__footer>
+      <span>ну пожалуйста</span>
+      <br>
+      <span>Work in progress</span>
+    </div>
+
   </mat-sidenav>
 
   <mat-sidenav-content>
@@ -27,8 +36,6 @@
       <span>{{ headerTitle }}</span>
     </mat-toolbar>
 
-    <div class="router">
-      <router-outlet></router-outlet>
-    </div>
+    <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>

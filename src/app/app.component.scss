@@ -1,5 +1,7 @@
 @import '~@angular/material/theming';
 
+$mat-darker-primary-color: mat-color($mat-indigo, 700);
+
 :host {
   font-size: 20px;
 }
@@ -10,12 +12,18 @@
   &__container {
     height: 100%;
   }
+
+  &__nav-list {
+    padding-bottom: 580px;
+  }
+
+  &__footer {
+    text-align: center;
+    font-size: 12px;
+    color: mat-color($mat-indigo, 200);
+  }
 }
 
-.router {
-  margin: 20px 15px;
-}
-
-.nav-item_active {
-  color: mat-color($mat-indigo, 700);
+.li_selected {
+  color: $mat-darker-primary-color;
 }
