@@ -1,5 +1,6 @@
 <mat-sidenav-container class="sidenav__container">
-  <mat-sidenav class="sidenav"
+  <mat-sidenav #sideNav
+    class="sidenav"
     mode="side">
     <mat-nav-list>
 
@@ -16,13 +17,13 @@
     </mat-nav-list>
   </mat-sidenav>
 
-  <mat-sidenav-content class="sidenav__content">
+  <mat-sidenav-content>
     <mat-toolbar color="primary">
-      <fa-icon class="nav-toggler"
-        (click)="changeSidebarState()"
-        [icon]="faIcon"
-        pull="left"
-        [size]="'lg'"></fa-icon>
+      <button mat-icon-button
+        (click)='sideNav.toggle()'>
+        <mat-icon *ngIf="sideNav.opened">chevron_left</mat-icon>
+        <mat-icon *ngIf="!sideNav.opened">menu</mat-icon>
+      </button>
       <span>{{ headerTitle }}</span>
     </mat-toolbar>
 

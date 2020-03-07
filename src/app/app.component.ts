@@ -1,8 +1,7 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatSidenav } from '@angular/material/sidenav';
+import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
-import { faBars, faHome, faInfo, faMarker, faPlay, faTimes, IconDefinition } from '@fortawesome/free-solid-svg-icons';
+import { faHome, faInfo, faMarker, faPlay } from '@fortawesome/free-solid-svg-icons';
 import { filter, map, mergeMap } from 'rxjs/operators';
 
 @Component({
@@ -11,12 +10,7 @@ import { filter, map, mergeMap } from 'rxjs/operators';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  @ViewChild(MatSidenav, { static: true })
-  private sidenav: MatSidenav;
-
-  public faIcon: IconDefinition = faBars;
   public headerTitle: string;
-
   public navigationsRoutes = [
     { title: 'Home', link: '', icon: faHome },
     { title: 'Posts', link: 'posts', icon: faMarker },
@@ -44,10 +38,5 @@ export class AppComponent implements OnInit {
         this.titleService.setTitle(event.title);
         this.headerTitle = event.title;
       });
-  }
-
-  public changeSidebarState() {
-    this.sidenav.toggle();
-    this.faIcon = this.faIcon.iconName === 'bars' ? faTimes : faBars;
   }
 }
