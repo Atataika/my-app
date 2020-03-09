@@ -1,0 +1,36 @@
+:host {
+  font-size: 20px;
+  display: grid;
+  grid-template-columns: 1fr;
+  height: 90%;
+  justify-items: center;
+  align-items: center;
+}
+
+.wrapper {
+  padding: 40px;
+
+  h1 {
+    font-size: 40px;
+  }
+
+  .root-ul {
+    padding-left: 20px;
+  }
+
+  ul {
+    &__frontend {
+      margin: 10px;
+    }
+
+    &__backend {
+      margin: 10px;
+    }
+  }
+
+  p {
+    width: 1250px;
+    line-height: 1.2em;
+    word-wrap: break-word;
+  }
+}
