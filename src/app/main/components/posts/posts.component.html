@@ -1,1 +1,10 @@
-<p>posts works!</p>
+<mat-toolbar color="warn">Oops... work in progress</mat-toolbar>
+
+<div *ngIf="posts; else noPosts">
+
+</div>
+
+<ng-template #noPosts>
+  <div>Хмм, похоже, что тут нет постов. Добавить?</div>
+  <button mat-stroked-button>Add post</button>
+</ng-template>
