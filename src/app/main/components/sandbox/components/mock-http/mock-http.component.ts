@@ -11,6 +11,10 @@ import { MockUsersResponseModel } from 'src/app/shared/api/mock-http/models/mock
 export class MockHttpComponent {
   public users: MockUserResponseModel[];
 
+  private mockAuthData = {
+    email: 'foo-mail@foogle.com'
+  };
+
   constructor(private http: MockHttpApiService) {}
 
   public onGetUsers(): void {
@@ -19,5 +23,9 @@ export class MockHttpComponent {
 
   public onGetFaultReq(): void {
     this.http.getErrorResponse().subscribe();
+  }
+
+  public onFaultLogin(): void {
+    this.http.postLoginErrorResponse(this.mockAuthData).subscribe();
   }
 }

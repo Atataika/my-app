@@ -24,4 +24,9 @@ export class Urls {
   public static getErrorResponse(): string {
     return `${mockUrl}/api/users/23`;
   }
+
+  /** Получить ошибку авторизации */
+  public static postLoginErrorResponse(): string {
+    return `${mockUrl}/api/login`;
+  }
 }

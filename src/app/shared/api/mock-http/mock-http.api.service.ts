@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Urls } from '../urls';
+import { AuthDataModel } from './models/auth-data.model';
 import { MockUserResponseModel } from './models/mock-user.model';
 import { MockUsersResponseModel } from './models/mock-users-response.model';
 
@@ -19,5 +20,9 @@ export class MockHttpApiService {
 
   public getErrorResponse(): Observable<any> {
     return this.http.get(Urls.getErrorResponse());
+  }
+
+  public postLoginErrorResponse(authData: AuthDataModel): Observable<any> {
+    return this.http.post<AuthDataModel>(Urls.postLoginErrorResponse(), authData);
   }
 }

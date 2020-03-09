@@ -1,12 +1,18 @@
 <nav mat-tab-nav-bar>
-  <a routerLink="mock-http"
-    mat-tab-link>Mock http
+  <a mat-tab-link
+    routerLink="mock-http"
+    routerLinkActive="active"
+    [routerLinkActiveOptions]="{exact: true}">Mock http
   </a>
-  <a routerLink="host-listener"
-    mat-tab-link>Host listener
+  <a mat-tab-link
+    routerLink="host-listener"
+    routerLinkActive="active"
+    [routerLinkActiveOptions]="{exact: true}">Host listener
   </a>
-  <a routerLink="interceptor-logger"
-    mat-tab-link>Interceptor logger
+  <a mat-tab-link
+    routerLink="interceptor-logger"
+    routerLinkActive="active"
+    [routerLinkActiveOptions]="{exact: true}">Interceptor logger
   </a>
 </nav>
 

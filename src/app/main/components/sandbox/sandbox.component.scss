@@ -1,0 +1,6 @@
+@import '~@angular/material/theming';
+
+.active {
+  color: mat-color($mat-indigo, 500);
+  background-color: mat-color($mat-indigo, 100);
+}
