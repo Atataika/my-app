@@ -3,6 +3,8 @@ import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { faHome, faInfo, faMarker, faPlay } from '@fortawesome/free-solid-svg-icons';
 import { filter, map, mergeMap } from 'rxjs/operators';
+import { InterceptorStoreService } from './core/store/impl/interceptor-store.service';
+import { InterceptorLogsApiService } from './shared/api/interceptor-logs/interceptor-logs.service';
 
 @Component({
   selector: 'app-root',
@@ -18,9 +20,19 @@ export class AppComponent implements OnInit {
     { title: 'About me', link: 'about', icon: faInfo }
   ];
 
-  constructor(private router: Router, private activatedRoute: ActivatedRoute, private titleService: Title) {}
+  constructor(
+    private router: Router,
+    private activatedRoute: ActivatedRoute,
+    private titleService: Title,
+    private interceptorStoreService: InterceptorStoreService,
+    private interceptorLogsService: InterceptorLogsApiService
+  ) {}
 
   ngOnInit() {
+    this.interceptorLogsService
+      .getInterceptorLogs()
+      .subscribe(logs => this.interceptorStoreService.setStoreValueViaApi(logs));
+
     this.router.events
       .pipe(
         filter(event => event instanceof NavigationEnd),

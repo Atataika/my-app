@@ -7,7 +7,6 @@ import { HostListenerDirective } from './directives/host-listener.directive';
 import { MarkerDirective } from './directives/marker.directive';
 import { MaterialModule } from './material.module';
 import { ErrorDialogService } from './services/error-dialog.service';
-import { InterceptorMapperService } from './services/interceptor-mapper.service';
 
 const components = [
   ErrorDialogComponent,
@@ -18,7 +17,7 @@ const components = [
 ];
 
 @NgModule({
-  providers: [ErrorDialogService, InterceptorMapperService],
+  providers: [ErrorDialogService],
   declarations: [...components],
   imports: [CommonModule, MaterialModule],
   exports: [...components, MaterialModule]

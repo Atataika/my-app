@@ -1,31 +1,25 @@
 import { DataSource } from '@angular/cdk/collections';
-import { HttpEventType, HttpHeaders } from '@angular/common/http';
 import { MatPaginator } from '@angular/material/paginator';
 import { merge, Observable, of as observableOf } from 'rxjs';
 import { first, map } from 'rxjs/operators';
-import { InterceptorMapperService } from '../../services/interceptor-mapper.service';
+import { InterceptorStoreService } from 'src/app/core/store/impl/interceptor-store.service';
+import { ResponseLog } from '../../models/response.model';
 
-export interface ErrorsLogsTableItem {
-  body: any;
-  type: HttpEventType.Response;
-  headers: HttpHeaders;
-  status: number;
-  statusText: string;
-  url: string;
-  ok: boolean;
-  dateCreated: string;
-}
-
-export class ErrorsLogsTableDataSource extends DataSource<ErrorsLogsTableItem> {
-  data: ErrorsLogsTableItem[];
+export class ErrorsLogsTableDataSource extends DataSource<ResponseLog> {
+  data: ResponseLog[];
   paginator: MatPaginator;
 
-  constructor(private interceptorMapper: InterceptorMapperService) {
+  constructor(private interceptorStoreService: InterceptorStoreService) {
     super();
-    this.interceptorMapper.failedResponses$.pipe(first()).subscribe(res => (this.data = res));
+    this.interceptorStoreService.storeValue$
+      .pipe(
+        first(),
+        map(elems => elems.filter(item => item.error === true))
+      )
+      .subscribe(res => (this.data = res));
   }
 
-  connect(): Observable<ErrorsLogsTableItem[]> {
+  connect(): Observable<ResponseLog[]> {
     const dataMutations = [observableOf(this.data), this.paginator.page];
 
     return merge(...dataMutations).pipe(map(() => this.getPagedData([...this.data])));
@@ -33,7 +27,7 @@ export class ErrorsLogsTableDataSource extends DataSource<ErrorsLogsTableItem> {
 
   disconnect() {}
 
-  private getPagedData(data: ErrorsLogsTableItem[]) {
+  private getPagedData(data: ResponseLog[]) {
     const startIndex = this.paginator.pageIndex * this.paginator.pageSize;
     return data.splice(startIndex, this.paginator.pageSize);
   }

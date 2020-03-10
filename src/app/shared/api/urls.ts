@@ -1,3 +1,4 @@
+export const baseUrl = 'http://localhost:3000';
 export const mockUrl = 'https://reqres.in';
 
 export class Urls {
@@ -5,7 +6,11 @@ export class Urls {
 
   /** Получить все логи interceptor'а */
   public static getInterceptorLogs(): string {
-    return `${mockUrl}/UNDEFINED`;
+    return `${baseUrl}/interceptor-logs/logs`;
+  }
+
+  public static postInterceptorLog(): string {
+    return `${baseUrl}/interceptor-logs/log`;
   }
 
   /** Mock http */

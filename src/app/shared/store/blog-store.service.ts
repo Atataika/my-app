@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { PostModel } from '../../models/post.model';
-import { StoreBaseService } from '../store-base.service';
+import { StoreBaseService } from 'src/app/core/store/store-base.service';
+import { PostModel } from './models/post.model';
 
 @Injectable({
   providedIn: 'root'
